@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Message to WhatsApp</title>
+  <style>
+    :root{
+      --primary: #b6895b;
+      --bg: #010101;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f5f5f5;
+      background-image: url('../img/Coffe-Art.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      margin: auto;
+      max-width: 500px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      width: 80%;
+    }
+
+    .btn-send {
+      background-color: #fff;
+      color: var(--bg);
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-send:hover {
+      background-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Kirim Pesan ke WhatsApp</h1>
+  <p>Klik tombol di bawah untuk mengirim pesan melalui WhatsApp.</p>
+  
+  <!-- Tombol Send Message -->
+  <a href="#" class="btn-send" id="sendMessage">Send Message</a>
+</div>
+
+<script>
+  document.getElementById('sendMessage').addEventListener('click', function (event) {
+    event.preventDefault();
+
+    // Ganti nomor WhatsApp Anda di sini (gunakan format internasional tanpa + atau 0 di awal)
+    const phoneNumber = '6282319227488'; 
+    // Ganti dengan pesan yang ingin dikirim
+    const message = `Halo, saya ingin bertanya tentang produk Anda.`;
+
+    // Membuka WhatsApp dengan pesan
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, '_blank');
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Form to WhatsApp</title>
+  <style>
+    :root {
+        --primary: #b6895b;
+        --bg: #010101;
+    }
+
+    body {
+      font-family: Poppins, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg);
+      color: #fff;
+      background-image: url('../img/Coffe-Art.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .form-container textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #fff;
+      color: #222;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Form Order</h2>
+  <form id="orderForm">
+    <label for="name">Nama</label>
+    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+
+    <label for="address">Alamat Lengkap</label>
+    <textarea id="address" name="address" placeholder="Masukkan alamat lengkap" required></textarea>
+
+    <label for="phone">Nomor Telepon</label>
+    <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon" required>
+
+    <button type="button" id="submitBtn">Kirim ke WhatsApp</button>
+  </form>
+</div>
+
+<script>
+  // Menangani klik tombol submit
+  document.getElementById('submitBtn').addEventListener('click', function () {
+    const name = document.getElementById('name').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+
+    if (!name || !address || !phone) {
+      alert('Harap lengkapi semua data sebelum mengirim.');
+      return;
+    }
+
+    // Format pesan WhatsApp
+    const phoneNumber = '6282319227488';
+    const message = `Halo, saya ingin melakukan order:\n\nNama: ${name}\nAlamat: ${address}\nNomor Telepon: ${phone}`;
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Buka WhatsApp
+    window.open(whatsappURL, '_blank');
+  });
+</script>
+
+</body>
+</html>
